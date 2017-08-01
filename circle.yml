@@ -1,0 +1,24 @@
+machine:
+  xcode:
+    version: "8.3"
+
+checkout:
+  post:
+    - ./install.sh
+
+dependencies:
+  override:
+    - gem install xcpretty
+    - gem install fastlane
+    - brew update
+    - brew install ant
+    - brew install npm
+    - npm install shelljs@0.7.0
+
+test:
+  override:
+    - set -o pipefail &&
+      xcodebuild
+        -scheme "UnitTests"
+    - ./build/pre-build
+    - fastlane PR
