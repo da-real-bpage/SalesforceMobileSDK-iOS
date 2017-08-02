@@ -20,8 +20,8 @@ test:
     - echo scheme="UnitTests"
     - ./build/pre-build
     - fastlane PR
-
-general:
-  artifacts:
-    - slather_output
-    - test_output
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/slather_output
+    - cp slather_output/coveratura.xml $CIRCLE_TEST_REPORTS/slather_output/
+    - mkdir -p $CIRCLE_TEST_REPORTS/test_output
+    - cp test_output/* $CIRCLE_TEST_REPORTS/test_output/
