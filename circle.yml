@@ -22,6 +22,7 @@ test:
     - fastlane PR
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/slather_output
-    - cp slather_output/coveratura.xml $CIRCLE_TEST_REPORTS/slather_output/
+    - cp slather_output/cobertura.xml $CIRCLE_TEST_REPORTS/slather_output/
     - mkdir -p $CIRCLE_TEST_REPORTS/test_output
-    - cp test_output/* $CIRCLE_TEST_REPORTS/test_output/
+    - cp test_output/report.html $CIRCLE_TEST_REPORTS/test_output/
+    - cp test_output/report.junit $CIRCLE_TEST_REPORTS/test_output/
