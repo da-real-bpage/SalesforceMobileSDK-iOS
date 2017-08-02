@@ -17,8 +17,6 @@ dependencies:
 
 test:
   override:
-    - set -o pipefail &&
-      xcodebuild
-        -scheme "UnitTests"
+    - echo scheme="UnitTests"
     - ./build/pre-build
     - fastlane PR
