@@ -21,8 +21,11 @@ test:
     - ./build/pre-build
     - fastlane PR
   post:
-    - mkdir -p $CIRCLE_TEST_REPORTS/slather_output
-    - cp slather_output/cobertura.xml $CIRCLE_TEST_REPORTS/slather_output/
-    - mkdir -p $CIRCLE_TEST_REPORTS/test_output
-    - cp test_output/report.html $CIRCLE_TEST_REPORTS/test_output/
-    - cp test_output/report.junit $CIRCLE_TEST_REPORTS/test_output/
+    - cp slather_output/cobertura.xml $CIRCLE_TEST_REPORTS/
+    - cp fastlane/report.xml $CIRCLE_TEST_REPORTS/
+
+general:
+  artifacts:
+    - slather_output
+    - test_output
+    - fastlane/report.xml
