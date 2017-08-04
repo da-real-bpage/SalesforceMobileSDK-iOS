@@ -26,7 +26,6 @@ test:
     - cp slather_output/cobertura.xml $CIRCLE_TEST_REPORTS/slather
     - mkdir -p $CIRCLE_TEST_REPORTS/junit
     - cp fastlane/report.xml $CIRCLE_TEST_REPORTS/junit
-    - cp fastlane/report.html $CIRCLE_TEST_REPORTS/junit
 
 general:
   artifacts:
