@@ -1,0 +1,34 @@
+machine:
+  xcode:
+    version: "8.3"
+
+checkout:
+  post:
+    - ./install.sh
+
+dependencies:
+  override:
+    - gem install xcpretty
+    - gem install fastlane
+    - gem install coveralls
+    - brew update
+    - brew install ant
+    - brew install npm
+    - npm install shelljs@0.7.0
+
+test:
+  override:
+    - echo scheme="UnitTests"
+    - ./build/pre-build
+    - fastlane PR
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/slather
+    - cp slather_output/cobertura.xml $CIRCLE_TEST_REPORTS/slather
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit
+    - cp fastlane/report.xml $CIRCLE_TEST_REPORTS/junit
+
+general:
+  artifacts:
+    - slather_output
+    - test_output
+    - fastlane/report.xml

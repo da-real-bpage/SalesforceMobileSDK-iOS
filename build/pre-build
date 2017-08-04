@@ -9,7 +9,7 @@ echo "{
   	\"test_login_domain\" : \"${TEST_LOGIN_DOMAIN}\",
   	\"access_token\" : \"${ACCESS_TOKEN}\"
 }" > ./shared/test/test_credentials.json
-cat ./shared/test/test_credentials.json
 echo ${LOGINUSERS} > ./shared/test/ui_test_credentials.json
 cat ./shared/test/ui_test_credentials.json
+echo "test_credentials.json values sucessfully populated."
 
