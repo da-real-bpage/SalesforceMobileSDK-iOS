@@ -8,9 +8,9 @@ if !ENV["scheme"] or ENV["scheme"]==""
 	ENV["scheme"] = "UnitTests"
 end
 
-$Jenkins = false
-if ENV["JENKINS_URL"]
-  $Jenkins = true
+$CircleCI = false
+if ENV["CIRCLECI"]
+  $CircleCI = true
 end
 
 $GITPRAPI = "https://api.github.com/repos/forcedotcom/SalesforceMobileSDK-iOS/pulls/%s/files"
@@ -36,7 +36,7 @@ def combinePackagesOfXML(toFile, files)
 end
 
 def doDanger
-	if $Jenkins
+	if $CircleCi
 		begin
 			 danger(
 				 danger_id: "CI-result",
@@ -93,7 +93,7 @@ def testScheme(scheme)
 		  		scheme: oneScheme,
 		  		output_directory: "slather_output_temp/#{oneScheme}",
 		      html: true,
-		      jenkins: $Jenkins,
+		      circleci: $CircleCi,
 		      cobertura_xml: true,
 					ignore:["../*", "external/*"],
 		      proj: "./libs/%s/%s.xcodeproj" %[oneScheme, oneScheme]
@@ -121,13 +121,13 @@ end
 
 lane :PR do
 	schemes = Set.new
-	if ENV["ghprbPullId"] && ENV["gitToken"]
-		prFilesAPI = $GITPRAPI % ENV["ghprbPullId"]
-		curlCommand = "curl %s -H 'Authorization: token %s'" % [prFilesAPI, ENV["gitToken"]]
-		pullfiles = `#{curlCommand}`
-		prfiles = JSON.parse(pullfiles)
-		for prfile in prfiles
-			path = prfile["filename"]
+#	if ENV["CIRCLE_PULL_NUMBER"] && ENV["gitToken"]
+#		prFilesAPI = $GITPRAPI % ENV["CIRCLE_PULL_NUMBER"]
+#		curlCommand = "curl %s -H 'Authorization: token %s'" % [prFilesAPI, ENV["gitToken"]]
+#		pullfiles = `#{curlCommand}`
+#		prfiles = JSON.parse(pullfiles)
+#		for prfile in prfiles
+#			path = prfile["filename"]
       for scheme in $schemes
   			if path.include? scheme
   				schemes = schemes.add(scheme)
