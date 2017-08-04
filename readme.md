@@ -1,3 +1,6 @@
+Some changes for a pr.
+
+
 [![Build Status](https://forcedotcom.github.io/SalesforceMobileSDK-TestResults/iOS-test-results/dev/latest/buildstatus.svg)](https://forcedotcom.github.io/SalesforceMobileSDK-TestResults/iOS-test-results/dev/latest/index.html)
 
 # Salesforce.com Mobile SDK for iOS
