@@ -121,18 +121,18 @@ end
 
 lane :PR do
 	schemes = Set.new
-#	if ENV["CIRCLE_PULL_NUMBER"] && ENV["gitToken"]
-#		prFilesAPI = $GITPRAPI % ENV["CIRCLE_PULL_NUMBER"]
-#		curlCommand = "curl %s -H 'Authorization: token %s'" % [prFilesAPI, ENV["gitToken"]]
-#		pullfiles = `#{curlCommand}`
-#		prfiles = JSON.parse(pullfiles)
-#		for prfile in prfiles
-#			path = prfile["filename"]
-      for scheme in $schemes
+	if ENV["CIRCLE_PULL_NUMBER"] && ENV["gitToken"]
+		prFilesAPI = $GITPRAPI % ENV["CIRCLE_PULL_NUMBER"]
+		curlCommand = "curl %s -H 'Authorization: token %s'" % [prFilesAPI, ENV["gitToken"]]
+		pullfiles = `#{curlCommand}`
+		prfiles = JSON.parse(pullfiles)
+		for prfile in prfiles
+			path = prfile["filename"]
+   		for scheme in $schemes
   			if path.include? scheme
   				schemes = schemes.add(scheme)
   			end
-      end
+        end
 		end
 		puts "schemes:" + schemes.to_a().join(",")
 	end

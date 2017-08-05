@@ -11,6 +11,8 @@ dependencies:
     - gem install xcpretty
     - gem install fastlane
     - gem install danger
+    - gem install danger-xcov
+    - gem install danger-junit
     - gem install coveralls
     - brew update
     - brew install ant
@@ -26,10 +28,9 @@ test:
     - mkdir -p $CIRCLE_TEST_REPORTS/slather
     - cp slather_output/cobertura.xml $CIRCLE_TEST_REPORTS/slather
     - mkdir -p $CIRCLE_TEST_REPORTS/junit
-    - cp fastlane/report.xml $CIRCLE_TEST_REPORTS/junit
+    - cp test_output/*.junit $CIRCLE_TEST_REPORTS/junit
 
 general:
   artifacts:
-    - slather_output
-    - test_output
+    - *_output/**
     - fastlane/report.xml
