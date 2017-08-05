@@ -32,5 +32,4 @@ test:
 
 general:
   artifacts:
-    - *_output/**
     - fastlane/report.xml
