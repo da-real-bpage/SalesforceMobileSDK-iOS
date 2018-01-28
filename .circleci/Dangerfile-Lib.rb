@@ -44,3 +44,6 @@ if message.length > MAKRDOWN_LENGTH
   warn('Static Analysis found an issue with one or more files you modified.  Please fix the issue(s).')
   markdown message
 end
+
+# State what Library the test failures are for (or don't post at all).
+markdown "# Tests results for #{ENV['LIB']}" unless status_report[:errors].empty? && status_report[:warnings].empty?
