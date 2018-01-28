@@ -36,6 +36,7 @@ aliases:
           DANGER_GITHUB_API_TOKEN="d6c848fa0585147fd2f1""b37d03973333e8123e5e" danger --dangerfile=.circleci/Dangerfile-Lib.rb --danger_id="${LIB}" --verbose
       fi
     background: true
+    when: always
 
   - &codecov
     name: Codecov Uplaod

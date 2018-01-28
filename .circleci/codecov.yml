@@ -15,7 +15,7 @@ ignore:
 comment:
   layout: "reach, diff"
   behavior: default
-  require_changes: true
+  require_changes: false
 
 coverage:
   status:
