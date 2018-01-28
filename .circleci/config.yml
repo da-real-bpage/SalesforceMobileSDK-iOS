@@ -32,7 +32,7 @@ aliases:
     name: Danger Lib
     command:  |
       chruby 2.4.2
-      DANGER_GITHUB_API_TOKEN="d6c848fa0585147fd2f1""b37d03973333e8123e5e" danger --dangerfile=.circleci/Dangerfile-Lib.rb --danger_id="${LIB} --verbose
+      DANGER_GITHUB_API_TOKEN="d6c848fa0585147fd2f1""b37d03973333e8123e5e" danger --dangerfile=.circleci/Dangerfile-Lib.rb --danger_id="${LIB}" --verbose
       background: true
 
   - &codecov
