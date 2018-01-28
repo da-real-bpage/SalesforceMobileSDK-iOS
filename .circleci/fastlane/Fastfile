@@ -160,6 +160,7 @@ lane :PR do |options|
     end
   end
   UI.important "Schemes to test: " + schemes.to_a().join(",")
+  ENV['LIBS_TO_TEST'] = schemes.to_a().join(" ")
 
   lib_to_test = options[:lib]
   if lib_to_test.nil?

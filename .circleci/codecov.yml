@@ -15,4 +15,29 @@ ignore:
 comment:
   layout: "reach, diff"
   behavior: default
-  require_changes: true 
+  require_changes: true
+
+coverage:
+  status:
+    project:
+      default: false  # disable the default status that measures entire project
+      SalesforceAnalytics:
+        target: auto
+        paths: "libs/SalesforceAnalytics/SalesforceAnalytics/"
+        flags: SalesforceAnalytics
+      SalesforceSDKCore:
+        target: auto
+        paths: "libs/SalesforceSDKCore/SalesforceSDKCore/"
+        flags: SalesforceSDKCore
+      SalesforceHybridSDK:
+        target: auto
+        paths: "libs/SalesforceHybridSDK/SalesforceHybridSDK/"
+        flags: SalesforceHybridSDK
+      SmartStore:
+        target: auto
+        paths: "libs/SmartStore/SmartStore/"
+        flags: SmartStore
+      SmartSync:
+        target: auto
+        paths: "libs/SmartSync/SmartSync/"
+        flags: SmartSync
