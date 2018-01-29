@@ -27,15 +27,12 @@ aliases:
       chruby 2.4.2
       cd .circleci
       fastlane ${FASTLANE_LANE}
-      echo -e "export LIBS_TO_TEST=\"$LIBS_TO_TEST\"" >> "${BASH_ENV}"
 
   - &danger-lib
     name: Danger Lib
     command:  |
-      if [ -z "$LIBS_TO_TEST" ] || [[ "$LIBS_TO_TEST" == *"${CURRENT_LIB}"* ]]; then 
-          chruby 2.4.2
-          DANGER_GITHUB_API_TOKEN="d6c848fa0585147fd2f1""b37d03973333e8123e5e" danger --dangerfile=.circleci/Dangerfile-Lib.rb --danger_id="${LIB}" --verbose
-      fi
+      chruby 2.4.2
+      DANGER_GITHUB_API_TOKEN="d6c848fa0585147fd2f1""b37d03973333e8123e5e" danger --dangerfile=.circleci/Dangerfile-Lib.rb --danger_id="${LIB}" --verbose
     background: true
     when: always
 
