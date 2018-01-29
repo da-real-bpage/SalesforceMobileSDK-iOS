@@ -51,6 +51,8 @@ defaults: &defaults
   macos:
     xcode: "9.2.0"
   shell: /bin/bash --login -eo pipefail
+  environment:
+    BASH_ENV: ~/.bashrc
 
 version: 2
 jobs:
